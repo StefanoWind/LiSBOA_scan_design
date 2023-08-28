@@ -7,10 +7,33 @@ This package allows the user to identify the optimal scan parameters for a lidar
 The user defines the inputs in an Excel table. Then the LiSBOA_Pareto_design is run to calculate the three objective functions. Finally, the Pareto front and the full geometry of a selected scan can be visualized through the LiSBOA_design_postpro.
 
 # Inputs
-The inputs of the scan are defined in an Excel table like the data/Scan_info.xlsx. The full list of inputs is:
-- Run [boolean]: if TRUE, the entry is processed, of FALSE, it is sckipped
+The inputs of the scan optimizer are defined in an Excel table like the data/Scan_info.xlsx. The full list of inputs is:
+- Run [boolean]: if TRUE, the entry is processed; if FALSE, it is sckipped
 - Scan name [string]: the name of the scan
 - vec_dazi [deg]: the list of azimuth resolution to be tested
 - vec_azi_max [deg]: the list of limits of the azimuth. The tested azimuth will go from -azi_max to +azi_max with a dazi step
 - vec_dele [deg]: the list of elevation resolution to be tested
 - vec_ele_max [deg]: the list of limits of the elevatin. The tested elevation will go from -ele_max to +ele_max with a dazi step
+- d_cartestian [boolean]: if TRUE, the azimuth and elevation resolutions are multiplied cartesianly so that all the possible combination are tested; if FALSE, the azimuth and elevation resolutions are tested in pairs (they must have the same legnth in this case)
+- max_cartestian [boolean]: if TRUE, the azimuth and elevation limits are multiplied cartesianly so that all the possible combination are tested; if FALSE, the azimuth and elevation limits are tested in pairs (they must have the same legnth in this case)
+- Dn0 [m]: vector of fundamental half-wavelengths
+- dr [m]: range gate length of the lidar
+- rmin [m]: minimum range of the lidar
+- rmax [m]: maximum range of the lidar
+- mins [m]: lower boundary of the domain in x,y,z
+- maxs [m]: upper boundary of the domain in x,y,z
+- sigma [multiple of fundamental half-wavelengths]: smoothing parameter of the LiSBOA (1/4 recommended)
+- T_tot [s]: total duration of the experiment
+- tau [s]: mean integral time scale of the flow
+- sampl_time [s]: sampling time of the lidar needed to measure a beam
+- U [m/s]: mean wind speed
+
+The LiSBOA_Pareto_design only requires as input the path to the input table. The LiSBOA_design_postpro needs as inputs:
+- root [string]: the location of the folder containing the Pareto fron results
+- source [string]: the name of the specific scan to plot
+- sel [deg]: the set of azimuth resolution, azimuth limit, elevation resolution, elevation limit whose geometry is plot in details
+- save_fig [boolean]: if TRUE, figures are automatically saved
+
+# Outputs
+LiSBOA_Pareto_design produces netcdf fiels that are saved in t data/*date*_*time*_*input*.
+LiSBOA_design_postpro produces plots that can be automatically saved.
