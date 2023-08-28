@@ -34,7 +34,7 @@ The LiSBOA_design_postpro needs as inputs:
 - root [string]: the location of the folder containing the Pareto front results
 - source [string]: the name of the specific scan to plot
 - sel [deg]: the set of azimuth resolution, azimuth limit, elevation resolution, elevation limit whose geometry is plot in details
-- save_fig [boolean]: if TRUE, figures are automatically saved
+- save_fig [boolean]: if TRUE, figures are automatically saved in figure/date_time_input/scan.
 
 # Outputs
 LiSBOA_Pareto_design produces netcdf fiels that are saved in t data/date_time_input.nc.
