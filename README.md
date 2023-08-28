@@ -37,6 +37,6 @@ The LiSBOA_design_postpro needs as inputs:
 - save_fig [boolean]: if TRUE, figures are automatically saved
 
 # Outputs
-LiSBOA_Pareto_design produces netcdf fiels that are saved in t data/\*date\*_\*time\*_\*input.nc.
+LiSBOA_Pareto_design produces netcdf fiels that are saved in t data/date_time_input.nc.
 
 LiSBOA_design_postpro produces plots that can be automatically saved.
